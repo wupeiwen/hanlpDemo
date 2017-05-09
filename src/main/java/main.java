@@ -59,21 +59,19 @@ public class main {
 //                    System.out.println("地址："+temp[0]);
                     break;
                 case "m":
-                    //       正则表达式匹配手机号
-                    existPhone=check("^0\\d{2,3}\\d{7,8}$|^1[358]\\d{9}$|^147\\d{8}",temp[0]);
-//                    if (existPhone){
+                    if (check("^0\\d{2,3}\\d{7,8}$|^1[358]\\d{9}$|^147\\d{8}",temp[0])){
+//                        正则表达式匹配手机号
+                        existPhone=true;
 //                        System.out.println("手机号："+temp[0]);
-//                    }
-                    //       正则表达式匹配身份证号
-                    existIDcard=check("([1-9]\\d{14}|[1-9]\\d{14}\\d{2}[0-9x])$",temp[0]);
-//                    if (existIDcard){
+                    }else if (check("([1-9]\\d{14}|[1-9]\\d{14}\\d{2}[0-9x])$",temp[0])){
+//                        正则表达式匹配身份证号
+                        existIDcard=true;
 //                        System.out.println("身份证号："+temp[0]);
-//                    }
+                }
                     break;
             }
         }
-        System.out.println(existIDcard);
-        String result="检测到可能存在敏感信息: ";
+        String result="检测到可能存在以下敏感信息: ";
         if (existPhone||existIDcard||existName||existAddress){
             if(existName){
                 result+="姓名 ";
